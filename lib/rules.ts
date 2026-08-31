@@ -3,7 +3,7 @@ import type { Flag, Opportunity } from "./types";
 
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-function daysBetween(earlier: string, later: string): number {
+export function daysBetween(earlier: string, later: string): number {
   return Math.round(
     (new Date(later).getTime() - new Date(earlier).getTime()) / MS_PER_DAY,
   );

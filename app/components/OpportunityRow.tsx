@@ -5,6 +5,7 @@ import type { EvaluatedOpportunity } from "@/lib/types";
 import { currentStage } from "@/lib/types";
 import { formatCurrency, formatStage } from "./format";
 import { SeverityBadge } from "./SeverityBadge";
+import { ContradictionPanel } from "./ContradictionPanel";
 
 export function OpportunityRow({ opportunity, flags }: EvaluatedOpportunity) {
   const [expanded, setExpanded] = useState(false);
@@ -46,19 +47,7 @@ export function OpportunityRow({ opportunity, flags }: EvaluatedOpportunity) {
 
       {expanded && (
         <div className="border-t border-neutral-100 bg-neutral-50 px-4 py-3 dark:border-neutral-900 dark:bg-neutral-950">
-          {flags.length === 0 ? (
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              No contradictions — stage and activity history agree.
-            </p>
-          ) : (
-            <ul className="flex flex-col gap-1 text-sm text-neutral-700 dark:text-neutral-300">
-              {flags.map((flag) => (
-                <li key={flag.ruleId}>
-                  <span className="font-medium">{flag.severity}</span> — {flag.message}
-                </li>
-              ))}
-            </ul>
-          )}
+          <ContradictionPanel opportunity={opportunity} flags={flags} />
         </div>
       )}
     </li>
