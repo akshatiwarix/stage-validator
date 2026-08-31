@@ -1,3 +1,7 @@
+// Fixed reference date the whole corpus is evaluated against, so the
+// deployed demo's flags never silently change as real time passes.
+export const AS_OF_DATE = "2026-08-31";
+
 export type Stage =
   | "discovery"
   | "qualification"
